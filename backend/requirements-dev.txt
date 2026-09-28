@@ -1,4 +1,4 @@
 -r requirements.txt
 httpx2>=2.13,<3.0
-pytest>=8.4,<10.0
+pytest>=9.1.1,<10.0
 ruff>=0.12,<1.0
