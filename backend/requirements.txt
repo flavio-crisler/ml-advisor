@@ -1,4 +1,4 @@
-fastapi>=0.116,<1.0
+fastapi>=0.141.1,<1.0
 catboost>=1.2.8,<2.0
 joblib>=1.4,<2.0
 lightgbm>=4.6,<5.0
