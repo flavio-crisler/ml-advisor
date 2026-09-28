@@ -1,0 +1,14 @@
+customer_id;active;created_at;segment;target;amount;constant
+1;true;2026-01-01;A;yes;10;same
+2;false;2026-01-02;A;no;11;same
+3;true;2026-01-03;A;yes;12;same
+4;false;2026-01-04;B;no;13;same
+5;true;2026-01-05;A;yes;;same
+6;false;2026-01-06;B;no;15;same
+7;true;2026-01-07;A;yes;16;same
+8;false;2026-01-08;B;no;17;same
+9;true;2026-01-09;A;yes;18;same
+10;false;2026-01-10;B;no;19;same
+11;true;2026-01-11;A;yes;20;same
+12;false;2026-01-12;B;no;1000;same
+

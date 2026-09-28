@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ML Advisor social preview</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        width: 1280px;
+        height: 640px;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        color: #182338;
+        background: #f8fbff;
+      }
+      .canvas {
+        width: 1280px;
+        height: 640px;
+        padding: 64px 78px;
+        background:
+          radial-gradient(circle at 88% 8%, #d9e9ff 0, transparent 32%), #f8fbff;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: #285de5;
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+      }
+      .mark {
+        display: grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: #285de5;
+        color: #fff;
+        font-size: 20px;
+      }
+      .eyebrow {
+        margin-top: 70px;
+        font-size: 17px;
+        color: #285de5;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      h1 {
+        max-width: 810px;
+        margin: 22px 0 18px;
+        font-size: 58px;
+        line-height: 1.09;
+        letter-spacing: -0.045em;
+      }
+      p {
+        max-width: 790px;
+        margin: 0;
+        font-size: 23px;
+        line-height: 1.5;
+        color: #52617a;
+      }
+      .steps {
+        display: flex;
+        gap: 14px;
+        margin-top: 32px;
+      }
+      .step {
+        padding: 14px 20px;
+        border: 1px solid #dae4f4;
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 8px 28px #243d6610;
+        font-size: 17px;
+        font-weight: 600;
+      }
+      .step.accent {
+        background: #285de5;
+        color: #fff;
+        border-color: #285de5;
+      }
+      .footer {
+        position: absolute;
+        bottom: 38px;
+        left: 78px;
+        color: #6a7890;
+        font-size: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="canvas">
+      <div class="brand"><span class="mark">M</span> ML Advisor</div>
+      <div class="eyebrow">Local-first machine learning</div>
+      <h1>Compare models, inspect results, and test semantic variables.</h1>
+      <p>
+        Reproducible tabular experiments with optional Jev-powered decision and
+        feature workflows.
+      </p>
+      <div class="steps">
+        <span class="step">Profile data</span
+        ><span class="step">Train models</span
+        ><span class="step">Compare results</span
+        ><span class="step accent">Explore Jev</span>
+      </div>
+      <div class="footer">Open-source pre-release · Runs locally</div>
+    </div>
+  </body>
+</html>

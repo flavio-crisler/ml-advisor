@@ -1,0 +1,153 @@
+{
+  "brand": {
+    "name": "ML Advisor"
+  },
+  "language": {
+    "selector": "Selecionar idioma",
+    "portuguese": "PT",
+    "english": "EN"
+  },
+  "help": {
+    "moreInformation": "Mais informações",
+    "moreInformationFor": "Mais informações sobre {{label}}"
+  },
+  "aiExplanation": {
+    "title": "Explicar resultados com IA",
+    "description": "Gera, somente quando solicitado, uma interpretação geral e uma explicação para cada gráfico usando configurações, métricas e agregados exibidos. Nenhuma linha original do dataset é enviada.",
+    "action": "Gerar explicação",
+    "regenerate": "Gerar novamente",
+    "loading": "Gerando explicação...",
+    "localNotice": "O provider {{provider}} é local. O contexto permanece neste ambiente.",
+    "externalNotice": "O provider {{provider}} é externo. Ao continuar, o contexto agregado exibido será enviado a esse serviço.",
+    "unavailable": "Configure LLM_PROVIDER e LLM_MODEL para habilitar esta explicação.",
+    "error": "Não foi possível gerar a explicação. Revise a configuração do provider e tente novamente.",
+    "generatedLabel": "Interpretação gerada por IA",
+    "findings": "Principais achados",
+    "cautions": "Ressalvas",
+    "nextSteps": "Próximos passos",
+    "disclaimer": "Use esta explicação como apoio: confira as métricas e o contexto antes de tomar decisões. A resposta não é persistida nem executa ações automaticamente."
+  },
+  "aiChart": {
+    "title": "Explicação deste gráfico",
+    "description": "A análise geral aparece aqui. O aprofundamento envia somente os agregados deste gráfico junto do contexto da execução.",
+    "action": "Aprofundar com IA",
+    "regenerate": "Aprofundar novamente",
+    "loading": "Aprofundando...",
+    "generatedLabel": "Análise geral por IA",
+    "focusedLabel": "Aprofundamento por IA",
+    "error": "Não foi possível aprofundar a explicação deste gráfico. Verifique o provider e tente novamente."
+  },
+  "aiImprovement": {
+    "title": "Proposta de melhoria aplicável",
+    "description": "A IA só pode escolher componentes e parâmetros suportados pelo ML Advisor. Você revisa as diferenças antes de criar um novo experimento.",
+    "generate": "Criar proposta de melhoria",
+    "regenerate": "Gerar nova proposta",
+    "generating": "Gerando proposta...",
+    "error": "A proposta não pôde ser validada. Nenhuma configuração foi aplicada; revise o provider e gere outra proposta.",
+    "reviewLabel": "Revisão obrigatória",
+    "changes": "Alterações propostas",
+    "before": "Configuração atual",
+    "after": "Configuração proposta",
+    "rationale": "Justificativas",
+    "cautions": "Ressalvas",
+    "unsupported": "Sugestões não suportadas",
+    "createDraft": "Criar experimento em rascunho",
+    "creatingDraft": "Criando rascunho...",
+    "noTraining": "Esta ação apenas cria o rascunho. O treinamento exige outro clique na tela do experimento.",
+    "draftError": "Não foi possível criar o rascunho. A origem pode ter mudado; gere uma nova proposta."
+  },
+  "navigation": {
+    "label": "Navegação principal",
+    "datasets": "Dados",
+    "experiments": "Experimentos",
+    "decisionLab": "Decisões com IA",
+    "resume": "Retomar: {{area}}"
+  },
+  "home": {
+    "eyebrow": "AutoML local-first",
+    "title": "Experimentos de machine learning claros e reproduzíveis.",
+    "description": "Uma base modular para criar, comparar e entender modelos tabulares sem abrir mão do controle técnico.",
+    "foundationLabel": "Fase atual",
+    "foundationValue": "Fundação do repositório",
+    "recent": {
+      "title": "Experimentos recentes",
+      "description": "Continue uma execução ou revise o melhor modelo e a métrica principal.",
+      "loading": "Carregando experimentos recentes...",
+      "error": "Não foi possível carregar os experimentos recentes.",
+      "errorDescription": "Verifique se a API está disponível e tente novamente.",
+      "retry": "Tentar carregar novamente",
+      "emptyTitle": "Nenhum experimento ainda.",
+      "emptyDescription": "Importe um dataset, defina um objetivo e escolha um modo de trabalho.",
+      "dataset": "Dataset",
+      "task": "Tarefa",
+      "bestModel": "Melhor modelo",
+      "pending": "Pendente",
+      "start": "Importar dados e começar",
+      "actions": {
+        "draft": "Continuar configuração",
+        "queued": "Acompanhar fila",
+        "running": "Acompanhar treinamento",
+        "completed": "Ver resultados",
+        "failed": "Revisar falha",
+        "cancelled": "Revisar e treinar novamente",
+        "open": "Abrir experimento"
+      }
+    },
+    "guide": {
+      "title": "O que você pode fazer",
+      "description": "Escolha um caminho. Você pode usar apenas o treinamento tradicional ou combinar os recursos de IA quando fizer sentido.",
+      "dismiss": "Ocultar guia",
+      "show": "Mostrar guia inicial",
+      "hidden": "O guia inicial está oculto. Você pode abri-lo novamente a qualquer momento.",
+      "train": {
+        "title": "Treinar e comparar modelos",
+        "description": "Importe um CSV, defina o que deseja prever e compare modelos com uma configuração reproduzível.",
+        "action": "Importar CSV"
+      },
+      "understand": {
+        "title": "Entender os resultados",
+        "description": "Revise métricas e gráficos de cada treino e, se desejar, peça uma explicação contextual à IA.",
+        "action": "Ver experimentos"
+      },
+      "decide": {
+        "title": "Avaliar decisões com IA",
+        "description": "Compare modelos zero-shot, crie variáveis semânticas e simule políticas de confiança com dados controlados.",
+        "action": "Explorar decisões"
+      }
+    },
+    "tasks": {
+      "binary_classification": "Classificação binária",
+      "multiclass_classification": "Classificação multiclasse",
+      "regression": "Regressão"
+    }
+  },
+  "health": {
+    "label": "Status da API",
+    "checking": "Verificando API",
+    "online": "API disponível",
+    "offline": "API indisponível"
+  },
+  "catalog": {
+    "title": "Recursos de treinamento disponíveis",
+    "description": "Componentes instalados que o ML Advisor pode usar nos experimentos.",
+    "loading": "Carregando catálogo de componentes...",
+    "error": "O catálogo de componentes está indisponível.",
+    "retry": "Tentar novamente",
+    "models": "Modelos",
+    "metrics": "Métricas",
+    "preprocessors": "Tratamentos de dados",
+    "validators": "Estratégias de validação",
+    "tuners": "Métodos de otimização"
+  },
+  "workflow": {
+    "label": "Fluxo do experimento",
+    "steps": {
+      "dataset": "Dados",
+      "objective": "O que prever",
+      "strategy": "Como treinar",
+      "configuration": "Revisão",
+      "training": "Treino",
+      "results": "Resultados"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "training": {
+    "started": "Training started.",
+    "inProgress": "Training in progress.",
+    "cancelled": "Training cancelled.",
+    "completed": "Training completed.",
+    "model": {
+      "started": "Model training started.",
+      "in_progress": "Evaluating model folds.",
+      "completed": "Model training completed."
+    },
+    "validation": {
+      "completed": "Validation plan ready."
+    },
+    "tuning": {
+      "in_progress": "Optimizing model parameters."
+    }
+  },
+  "job": {
+    "completed": "Training job completed.",
+    "failed": "Training job failed.",
+    "cancelled": "Training job cancelled."
+  }
+}

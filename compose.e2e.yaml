@@ -1,0 +1,58 @@
+services:
+  data-init:
+    image: alpine:3.22
+    command: ["mkdir", "-p", "/data/database", "/data/datasets", "/data/experiments"]
+    volumes:
+      - e2e_data:/data
+
+  flyway:
+    user: "0:0"
+    volumes:
+      - e2e_data:/data
+    depends_on:
+      data-init:
+        condition: service_completed_successfully
+
+  mock-llm:
+    image: node:22-alpine
+    command: ["node", "/e2e/mock-llm-server.mjs"]
+    volumes:
+      - ./e2e:/e2e:ro
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://localhost:3000/health').then(r => { if (!r.ok) process.exit(1) })"
+      interval: 2s
+      timeout: 2s
+      retries: 15
+
+  backend:
+    # Never inject the developer's .env (including real provider keys) into isolated test stacks.
+    env_file: !override []
+    environment:
+      APP_ENV: test
+      LLM_PROVIDER: vllm
+      LLM_MODEL: e2e-structured-model
+      LLM_BASE_URL: http://mock-llm:3000/v1
+      LLM_API_KEY: ""
+      LLM_SEND_SAMPLE: "false"
+      DECISION_FEATURES_ENABLED: "true"
+      DECISION_PROVIDER: typesafe_jev
+      DECISION_MODEL: jev-e2e
+      DECISION_BASE_URL: http://mock-llm:3000
+      DECISION_API_KEY: e2e-only-key
+    volumes:
+      - e2e_data:/data
+    ports: !override []
+    depends_on:
+      mock-llm:
+        condition: service_healthy
+
+  frontend:
+    ports: !override
+      - "127.0.0.1:28080:80"
+
+volumes:
+  e2e_data:

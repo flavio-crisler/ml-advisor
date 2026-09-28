@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Compose configuration
+        run: cp .env.example .env && docker compose config --quiet
+      - name: Verify published ports stay local
+        run: |
+          docker compose --profile ollama --profile vllm -f compose.yaml config --format json | jq -e 'all(.services[].ports[]?; .host_ip == "127.0.0.1")'
+          docker compose --profile ollama --profile vllm -f compose.yaml -f compose.dev.yaml config --format json | jq -e 'all(.services[].ports[]?; .host_ip == "127.0.0.1")'
+          docker compose --profile ollama --profile vllm -f compose.yaml -f compose.e2e.yaml config --format json | jq -e 'all(.services[].ports[]?; .host_ip == "127.0.0.1")'
+      - name: Test
+        run: make test
+      - name: Lint
+        run: make lint
+      - name: Build production images
+        run: make build
+      - name: Install Playwright browser
+        run: cd frontend && npm ci && npx playwright install --with-deps chromium
+      - name: End-to-end Docker workflows
+        env:
+          PLAYWRIGHT_CHANNEL: ""
+        run: make test-e2e
+      - name: Upload end-to-end failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-results
+          path: test-results/
+          if-no-files-found: ignore

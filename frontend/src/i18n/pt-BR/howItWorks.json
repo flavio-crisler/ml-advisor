@@ -1,0 +1,135 @@
+{
+  "buttonLabel": "Como funciona",
+  "close": "Fechar",
+  "tabs": {
+    "overview": "Visão Geral",
+    "technical": "Detalhes Técnicos",
+    "steps": "Passo a Passo"
+  },
+  "screens": {
+    "datasets": {
+      "title": "Como funciona: Dados e Perfis",
+      "subtitle": "Importação, análise exploratória e preparação de datasets para modelagem.",
+      "overview": "Esta tela é o ponto de partida do sistema. Aqui você faz o upload dos seus arquivos de dados (como CSV ou Parquet) e visualiza um resumo imediato da saúde das suas tabelas: quais colunas existem, se há valores ausentes, quais tipos de informação foram detectados e quais colunas podem ser previstas como objetivo de negócio.",
+      "technical": "O motor local gera um perfil estatístico determinístico univariado e bivariado. Ele calcula cardinalidade, distribuição de valores, percentual de nulos, desvio padrão e assimetria. Com base no tipo de dado e na cardinalidade, o sistema sugere colunas candidatas a target e infere o tipo de tarefa apropriado (classificação binária, classificação multiclasse ou regressão), preparando a linhagem de dados para os pipelines posteriores.",
+      "steps": [
+        "Faça o upload do seu arquivo de dados (CSV ou Parquet) arrastando-o para a área de upload.",
+        "Selecione o dataset na lista para carregar seu perfil estatístico detalhado.",
+        "Analise a saúde das colunas, verificando dados ausentes e formatos identificados.",
+        "Confira as sugestões automáticas de colunas alvo (target) e avance para criar um experimento ou uma decisão com IA."
+      ]
+    },
+    "expert": {
+      "title": "Como funciona: Experimento Especialista",
+      "subtitle": "Controle granular e manual completo sobre o pipeline de Machine Learning.",
+      "overview": "O Modo Especialista foi projetado para quem quer ter controle total sobre cada detalhe do treinamento de Machine Learning. Ao contrário do fluxo automatizado, aqui você decide pessoalmente quais algoritmos testar, como dividir os dados entre treino e teste, quais transformações aplicar nas variáveis e qual métrica matemática define o modelo vencedor.",
+      "technical": "Permite configurar manualmente a estratégia de validação cruzada (K-Fold estratificado, K-Fold simples ou divisão temporal), pré-processamento específico por tipo de coluna (One-Hot Encoding, TF-IDF para colunas textuais, Standard Scaler, tratamento de imputação de nulos) e seleção de estimadores (CatBoost, XGBoost, LightGBM, Random Forest, Logistic Regression). O rascunho é persistido de forma imutável antes de qualquer execução na fila.",
+      "steps": [
+        "Selecione a coluna que deseja prever (target) e verifique se a tarefa foi inferida corretamente.",
+        "Escolha a estratégia de divisão de validação cruzada e o número de folds.",
+        "Ative ou desative algoritmos específicos na lista de estimadores.",
+        "Configure o pré-processamento de colunas textuais e numéricas conforme o seu conhecimento de domínio.",
+        "Clique em salvar o rascunho e dispare o treinamento na fila de execução."
+      ]
+    },
+    "experiments": {
+      "title": "Como funciona: Experimentos",
+      "subtitle": "Gerenciamento central de testes e modelos supervisionados.",
+      "overview": "Nesta tela você encontra o histórico de todos os experimentos de Machine Learning criados no sistema. Você pode acompanhar quais estão sendo treinados agora, quais já terminaram e criar novos testes rapidamente com a ajuda do Advisor inteligente ou pelo modo manual.",
+      "technical": "Gerencia o ciclo de vida completo dos experimentos supervisionados com persistência relacional e artefatos de armazenamento. Suporta busca, filtros por dataset e status (rascunho, na fila, em execução, concluído, falho). Cada experimento mantém a rastreabilidade completa dos hiperparâmetros, commits de pipelines, sementes aleatórias (random seed) e versões dos datasets utilizados.",
+      "steps": [
+        "Utilize a barra de busca e os filtros laterais para encontrar experimentos por nome, status ou dataset.",
+        "Para criar um novo experimento, clique em 'Novo Experimento' e utilize o Advisor com IA ou o Modo Especialista.",
+        "Acompanhe o status de treinamento em tempo real.",
+        "Clique sobre qualquer experimento concluído para abrir a tabela de classificação (leaderboard) e comparar os modelos."
+      ]
+    },
+    "experimentDetail": {
+      "title": "Como funciona: Detalhes do Experimento",
+      "subtitle": "Leaderboard comparativo dos modelos avaliados.",
+      "overview": "Esta tela exibe o ranking dos modelos treinados para o seu dataset. É aqui que você descobre qual algoritmo (como CatBoost, XGBoost ou Random Forest) teve o melhor resultado para resolver o seu problema, comparando notas de acerto, tempo gasto e consistência.",
+      "technical": "Apresenta a tabela comparativa ordenada pela métrica de avaliação principal configurada (ex.: ROC-AUC, F1 macro, Log Loss, RMSE). Exibe a média e o desvio padrão obtidos em todos os folds de validação cruzada, tempo de treinamento por modelo e tamanho do artefato serializado. Permite inspecionar a linhagem de treino e aprofundar individualmente em cada estimador.",
+      "steps": [
+        "Analise a linha destacada no topo da tabela, que representa o modelo com melhor desempenho geral.",
+        "Compare as métricas secundárias (como F1, Acurácia, Log Loss) para entender a estabilidade de cada modelo.",
+        "Verifique o desvio padrão entre os folds para checar se o modelo não está sofrendo de variância excessiva.",
+        "Clique em 'Ver execução' ou no nome do modelo para abrir os diagnósticos detalhados e gráficos de interpretabilidade (SHAP)."
+      ]
+    },
+    "runDetail": {
+      "title": "Como funciona: Detalhes do Modelo",
+      "subtitle": "Interpretabilidade, diagnósticos e valores SHAP da execução.",
+      "overview": "Aqui você 'abre a caixa-preta' do modelo de Machine Learning. Esta tela explica o porquê de cada previsão: quais variáveis foram mais decisivas para as respostas do modelo, em quais situações ele acerta com facilidade e onde ele comete erros, acompanhado de explicações inteligentes em português.",
+      "technical": "Fornece diagnósticos completos de interpretabilidade através de valores SHAP (SHAP TreeExplainer / KernelExplainer com impacto médio absoluto e dispersão de valores), curvas ROC e Precision-Recall com área sob a curva (AUC), matriz de confusão normalizada e distribuição de erros/resíduos. Permite solicitar explicações contextuais geradas por IA sobre os gráficos sem transferir dados brutos de linhas.",
+      "steps": [
+        "Examine o gráfico de valores SHAP para identificar as variáveis com maior peso nas decisões do modelo.",
+        "Analise a Matriz de Confusão para entender a proporção de falsos positivos e falsos negativos.",
+        "Observe as curvas ROC e Precision-Recall para avaliar o equilíbrio entre precisão e sensibilidade em diferentes limiares.",
+        "Clique em 'Explicar com IA' se desejar uma síntese interpretativa automática dos resultados do modelo."
+      ]
+    },
+    "decisionProviders": {
+      "title": "Como funciona: Conexões de IA",
+      "subtitle": "Registro e diagnóstico dos provedores de Modelos de Decisão.",
+      "overview": "Nesta tela você confere e testa as conexões com serviços de inteligência artificial externa ou local (como o JEV via TypeSafe ou OpenRouter). Esses serviços são usados pelos módulos de Decisões com IA para responder a perguntas sem necessidade de treinamento tradicional.",
+      "technical": "Gerencia o registro de Decision Providers seguindo a especificação System One HTTP. O sistema testa a disponibilidade em tempo real (endpoint de health check e capacidades tipadas: Noul para decisões binárias, Choice para seleção entre categorias e Score para pontuações ordenadas). Mantém credenciais isoladas em variáveis de ambiente e valida a compatibilidade de contexto antes de qualquer execução.",
+      "steps": [
+        "Verifique se o provedor desejado está com o status 'Disponível'.",
+        "Clique no botão 'Testar conexão' para validar a comunicação e a latência de rede com a API.",
+        "Confira as capacidades suportadas pelo modelo ativo (Noul, Choice, Score).",
+        "Se o serviço estiver indisponível, verifique as chaves e variáveis DECISION_* no arquivo de configuração do backend."
+      ]
+    },
+    "decisionBenchmark": {
+      "title": "Como funciona: Comparar Zero-Shot",
+      "subtitle": "Avaliação de Modelos de Decisão (JEV) sem treino tradicional.",
+      "overview": "Nesta tela você avalia o poder de inferência direta de uma IA (como o JEV) para resolver um problema de classificação do seu dataset fazendo apenas uma pergunta em linguagem natural, sem treinar nenhum algoritmo tradicional de Machine Learning.",
+      "technical": "Executa um benchmark zero-shot em lote através do adaptador do Decision Model. A coluna alvo (target) permanece estritamente isolada no backend para cálculo local de métricas, garantindo zero vazamento de dados (data leakage). As linhas de teste são enviadas com as colunas selecionadas para perguntas tipadas (Noul para Sim/Não ou Choice para opções), registrando previsões e probabilidades em formato Parquet para posterior calibração.",
+      "steps": [
+        "Selecione o Dataset que contém os dados reais e o gabarito.",
+        "Escolha a Coluna Alvo (target) que você quer que o modelo preveja.",
+        "Marque as colunas que devem ser enviadas como contexto para a IA decidir.",
+        "Escreva a pergunta em linguagem natural que a IA deve responder (ex.: 'Este cliente irá cancelar?').",
+        "Confirme o consentimento de processamento externo e clique em 'Iniciar comparação'.",
+        "Acompanhe o processamento e clique no card da execução para abrir a calibração."
+      ]
+    },
+    "calibrationLab": {
+      "title": "Como funciona: Laboratório de Calibração",
+      "subtitle": "Confiabilidade de probabilidades e comparação pareada supervisionada vs. zero-shot.",
+      "overview": "Esta tela avalia se as certezas da IA são sinceras: quando ela diz ter 90% de certeza, ela acerta 90% das vezes? Além disso, permite comparar o desempenho da IA (JEV) diretamente contra os modelos supervisionados clássicos (como CatBoost e XGBoost) nas mesmas linhas de teste.",
+      "technical": "Calcula métricas de calibração probabilística: Brier Score (erro quadrático das probabilidades), Log Loss e Erro Esperado de Calibração (ECE). Gera o Diagrama de Confiabilidade comparado à calibração ideal. O simulador de limiar permite projetar cobertura e taxa de abstenção. Na comparação pareada, calcula o delta exato (Δ) entre o modelo supervisionado e o JEV nas mesmas amostras de teste (final_test), avaliando acurácia, latência real (p95) e custo estimado.",
+      "steps": [
+        "Examine o Brier Score e o ECE no topo: quanto mais próximos de zero, melhor calibradas estão as probabilidades da IA.",
+        "Analise o Diagrama de Confiabilidade: quanto mais próxima a curva estiver da diagonal pontilhada, mais confiável é a pontuação.",
+        "Arraste o controle de Limiar de Confiança para simular qual acurácia você atinge automatizando apenas as previsões mais seguras.",
+        "Selecione um experimento supervisionado compatível no seletor para ver a tabela comparativa lado a lado (Supervisionado vs. JEV)."
+      ]
+    },
+    "semanticFeatures": {
+      "title": "Como funciona: Criar Variáveis com IA",
+      "subtitle": "Extração de atributos semânticos numéricos a partir de textos livres.",
+      "overview": "Transforme colunas com textos desestruturados (como comentários de clientes, chamados de suporte ou descrições) em variáveis numéricas que os algoritmos de Machine Learning conseguem entender. A IA sugere perguntas, você revisa os critérios e o sistema gera novas colunas para o seu dataset.",
+      "technical": "Implementa o fluxo de Semantic Feature Discovery. Primeiro, o LLM generativo analisa uma amostra dos textos e propõe perguntas semânticas estruturadas (Noul = probabilidade binária, Choice = probabilidades de categorias, Score = nota esperada e incerteza). Após revisão humana obrigatória, o Decision Provider (JEV) processa as linhas gerando um artefato numérico persistido que pode ser acoplado ao dataset para retreinamento de modelos supervisionados.",
+      "steps": [
+        "Selecione o Dataset e defina o objetivo de modelagem em linguagem simples.",
+        "Marque as colunas de texto livre que contêm informações relevantes.",
+        "Clique em 'Sugerir perguntas com IA' para receber propostas estruturadas.",
+        "Revise, edite ou crie novas perguntas tipadas (Noul, Choice ou Score).",
+        "Confirme o consentimento e clique em 'Gerar variáveis revisadas' para produzir o novo conjunto de dados."
+      ]
+    },
+    "confidenceCascade": {
+      "title": "Como funciona: Definir Confiança (Cascatas)",
+      "subtitle": "Políticas híbridas de automação com corte de limiar e revisão humana.",
+      "overview": "Crie regras de automação inteligentes e seguras para a sua operação: decida quais previsões a IA pode resolver sozinha no piloto automático (quando a confiança for alta) e quais devem ser encaminhadas para análise humana ou para um modelo alternativo.",
+      "technical": "Modela uma política operacional de cascata de confiança baseada em limiares de decisão calibrados. Utilizando as probabilidades persistidas de um benchmark zero-shot, a tela simula deterministicamente a taxa de cobertura (amostras que atingem o limiar de automação), a acurácia resultante do subconjunto automatizado, a taxa de revisão humana e a economia proporcional de custo, tudo sem realizar novas requisições externas à API.",
+      "steps": [
+        "Selecione a execução de benchmark concluída que deseja utilizar como base da política.",
+        "Mova a barra de limiar de confiança para encontrar o ponto ideal entre volume automatizado e acurácia exigida.",
+        "Analise a taxa de revisão humana projetada para garantir que sua equipe consiga absorver a demanda restante.",
+        "Verifique as métricas de qualidade simuladas e salve a política de decisão em cascata."
+      ]
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "buttonLabel": "How it works",
+  "close": "Close",
+  "tabs": {
+    "overview": "Overview",
+    "technical": "Technical Details",
+    "steps": "Step by Step"
+  },
+  "screens": {
+    "datasets": {
+      "title": "How it works: Data & Profiling",
+      "subtitle": "Importing, exploring, and preparing datasets for modeling.",
+      "overview": "This screen is the starting point of the platform. Here you upload your data files (such as CSV or Parquet) and see an instant summary of your dataset's health: which columns exist, whether there are missing values, what data types were detected, and which columns can be predicted as business targets.",
+      "technical": "The local engine generates a deterministic univariate and bivariate statistical profile. It computes cardinality, value distributions, missing value percentages, standard deviation, and skewness. Based on data types and cardinality, the system automatically suggests target candidates and infers the appropriate task type (binary classification, multiclass classification, or regression), establishing lineage for downstream pipelines.",
+      "steps": [
+        "Upload your data file (CSV or Parquet) by dragging it into the upload dropzone.",
+        "Select the dataset from the list to load its detailed statistical profile.",
+        "Inspect column health, checking for missing values and detected data types.",
+        "Review automatic target suggestions and proceed to create an experiment or an AI decision run."
+      ]
+    },
+    "expert": {
+      "title": "How it works: Expert Experiment",
+      "subtitle": "Complete, granular manual control over the Machine Learning pipeline.",
+      "overview": "Expert Mode is designed for users who want complete control over every aspect of model training. Unlike automated runs, here you personally choose which algorithms to test, how to split train and test sets, which feature transformations to apply, and which mathematical metric determines the winning model.",
+      "technical": "Enables manual configuration of cross-validation strategies (Stratified K-Fold, simple K-Fold, or temporal split), column-specific preprocessing (One-Hot Encoding, TF-IDF for text columns, Standard Scaler, missing value imputation), and estimator selection (CatBoost, XGBoost, LightGBM, Random Forest, Logistic Regression). The draft configuration is persisted immutably before being queued.",
+      "steps": [
+        "Select the target column you want to predict and verify that the task was correctly inferred.",
+        "Choose the cross-validation strategy and specify the number of folds.",
+        "Enable or disable specific algorithms in the estimator list.",
+        "Configure text and numerical preprocessing to match your domain knowledge.",
+        "Save the draft and trigger training in the execution queue."
+      ]
+    },
+    "experiments": {
+      "title": "How it works: Experiments",
+      "subtitle": "Central management for supervised tests and models.",
+      "overview": "This screen provides an overview of all Machine Learning experiments created in the system. You can track currently running jobs, view completed runs, and launch new experiments using either the AI Advisor or Expert Mode.",
+      "technical": "Manages the complete lifecycle of supervised experiments with relational persistence and storage artifacts. Supports search, dataset filtering, and status filters (draft, queued, running, completed, failed). Each experiment preserves complete traceability of hyperparameters, pipeline commits, random seeds, and dataset versions.",
+      "steps": [
+        "Use the search bar and sidebar filters to find experiments by name, status, or dataset.",
+        "To start a new experiment, click 'New Experiment' and use either the AI Advisor or Expert Mode.",
+        "Monitor training progress in real time.",
+        "Click on any completed experiment to open its leaderboard and compare models."
+      ]
+    },
+    "experimentDetail": {
+      "title": "How it works: Experiment Details",
+      "subtitle": "Comparative leaderboard of evaluated models.",
+      "overview": "This screen displays the leaderboard ranking all models trained on your dataset. Here you discover which algorithm (such as CatBoost, XGBoost, or Random Forest) achieved the best results for your problem by comparing accuracy, training time, and consistency.",
+      "technical": "Displays a comparative table sorted by the configured primary evaluation metric (e.g., ROC-AUC, Macro F1, Log Loss, RMSE). Shows the mean and standard deviation across all cross-validation folds, training time per model, and serialized artifact sizes. Allows inspecting pipeline lineage and drilling down into individual estimators.",
+      "steps": [
+        "Review the top row highlighted in the table, representing the overall winning model.",
+        "Compare secondary metrics (such as F1, Accuracy, Log Loss) to evaluate model stability.",
+        "Check cross-fold standard deviations to verify the model is not suffering from high variance.",
+        "Click 'View run' or the model name to open detailed diagnostics and SHAP interpretability charts."
+      ]
+    },
+    "runDetail": {
+      "title": "How it works: Model Details",
+      "subtitle": "Interpretability, diagnostics, and SHAP values for the trained model.",
+      "overview": "This screen opens the 'black box' of the Machine Learning model. It explains why the model makes its predictions: which features carried the most weight, where it makes reliable predictions, and where it makes errors, complete with AI-assisted explanations.",
+      "technical": "Provides comprehensive interpretability diagnostics using SHAP values (TreeExplainer / KernelExplainer displaying mean absolute impact and feature value distributions), ROC and Precision-Recall curves with AUC, normalized confusion matrices, and error/residual distributions. Allows requesting contextual AI explanations over rendered aggregates without sending raw row-level data.",
+      "steps": [
+        "Inspect the SHAP summary chart to identify the most influential variables in the model's decisions.",
+        "Examine the Confusion Matrix to understand false positive and false negative trade-offs.",
+        "Review ROC and Precision-Recall curves to assess precision-recall balance across thresholds.",
+        "Click 'Explain with AI' for an automated contextual summary of the model's performance."
+      ]
+    },
+    "decisionProviders": {
+      "title": "How it works: AI Connections",
+      "subtitle": "Registry and diagnostic checks for Decision Model providers.",
+      "overview": "Here you inspect and test connections to external or local AI decision services (such as JEV via TypeSafe or OpenRouter). These services are utilized by the AI Decisions modules to classify data without traditional training.",
+      "technical": "Manages Decision Provider registrations complying with the System One HTTP specification. The system validates real-time availability (health check endpoint and typed capabilities: Noul for binary decisions, Choice for categorical selections, and Score for ordered numeric scales). API keys remain isolated in environment variables, and token context limits are validated prior to execution.",
+      "steps": [
+        "Check whether the desired provider shows an 'Available' status.",
+        "Click 'Test connection' to verify network latency and live API responsiveness.",
+        "Review the supported capabilities of the active model (Noul, Choice, Score).",
+        "If a provider is unavailable, verify your DECISION_* configuration variables in the backend."
+      ]
+    },
+    "decisionBenchmark": {
+      "title": "How it works: Compare Zero-Shot",
+      "subtitle": "Evaluating Decision Models (JEV) without traditional training.",
+      "overview": "On this screen, you evaluate how well an AI decision model (such as JEV) performs classification tasks on your dataset using natural language questions, without training a traditional Machine Learning model.",
+      "technical": "Executes a batch zero-shot benchmark via the Decision Model adapter. The target column remains strictly isolated on the backend for local metric calculation, ensuring zero data leakage. Evaluation rows are dispatched with user-selected features into typed question contracts (Noul for Yes/No, Choice for categorical options), persisting predictions and probabilities into Parquet format for calibration.",
+      "steps": [
+        "Select the Dataset containing your ground-truth data.",
+        "Choose the Target Column you want the model to predict.",
+        "Check the input feature columns to supply as context to the AI.",
+        "Write a clear question in natural language (e.g., 'Will this customer cancel?').",
+        "Confirm the external processing acknowledgment and click 'Run benchmark'.",
+        "Track real-time progress and click the completed execution card to view calibration results."
+      ]
+    },
+    "calibrationLab": {
+      "title": "How it works: Calibration Lab",
+      "subtitle": "Probability reliability and paired supervised vs. zero-shot comparison.",
+      "overview": "This screen tests whether the AI's confidence scores are honest: when it claims 90% confidence, is it accurate 90% of the time? Furthermore, it allows you to compare the AI's performance directly against classic supervised models (like CatBoost or XGBoost) on the exact same test rows.",
+      "technical": "Computes probabilistic calibration metrics: Brier Score (mean squared error of probabilities), Log Loss, and Expected Calibration Error (ECE). Generates empirical Reliability Diagrams compared to ideal diagonal calibration. The interactive slider simulates coverage vs. abstention rates. In paired comparisons, it computes exact deltas (Δ) between the supervised model and JEV on the identical final test split, evaluating accuracy, p95 latency, and estimated cost.",
+      "steps": [
+        "Inspect the Brier Score and ECE at the top: lower values indicate well-calibrated probabilities.",
+        "Review the Reliability Diagram: curves close to the diagonal reflect trustworthy confidence scores.",
+        "Drag the Confidence Threshold slider to simulate accuracy when automating only high-confidence predictions.",
+        "Select a compatible supervised experiment to view the side-by-side paired comparison table."
+      ]
+    },
+    "semanticFeatures": {
+      "title": "How it works: Create Features with AI",
+      "subtitle": "Extracting structured numeric signals from unstructured text.",
+      "overview": "Transform columns with unstructured text (such as customer comments, support tickets, or product reviews) into numeric variables that Machine Learning algorithms can learn from. The AI proposes semantic questions, you review the criteria, and the system creates new columns for your dataset.",
+      "technical": "Implements the Semantic Feature Discovery workflow. A generative LLM analyzes sample text and proposes typed semantic questions (Noul = binary probability, Choice = categorical distribution, Score = expected score and uncertainty). After mandatory human review, the Decision Provider (JEV) processes all rows into a persistent numerical feature set ready for supervised model retraining.",
+      "steps": [
+        "Select the Dataset and define your modeling objective in plain language.",
+        "Choose the text columns containing relevant qualitative information.",
+        "Click 'Suggest questions with AI' to receive structured proposals.",
+        "Review, customize, or add typed questions (Noul, Choice, or Score).",
+        "Acknowledge external processing and click 'Generate revised features' to produce the new feature set."
+      ]
+    },
+    "confidenceCascade": {
+      "title": "How it works: Define Confidence (Cascades)",
+      "subtitle": "Hybrid automation policies with threshold cutoffs and human review.",
+      "overview": "Design intelligent, safe automation rules for your business operations: decide which cases the AI can handle on autopilot (when confidence is high) and which ambiguous cases should be escalated to human specialists or fallback models.",
+      "technical": "Models an operational confidence cascade policy based on calibrated decision thresholds. Using persisted probabilities from a completed zero-shot benchmark, the screen deterministically simulates coverage (automation rate), resulting subset accuracy, human review escalation rate, and operational cost savings—without issuing any new external API calls.",
+      "steps": [
+        "Select a completed benchmark run to serve as the baseline for your policy.",
+        "Adjust the confidence threshold slider to find the optimal trade-off between automation volume and required accuracy.",
+        "Review the projected human escalation rate to verify team capacity.",
+        "Inspect simulated quality metrics and save the confidence cascade policy."
+      ]
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "loading": "Carregando configuração avançada...",
+  "back": "Voltar ao dataset",
+  "eyebrow": "Modo avançado",
+  "title": "Configure cada etapa do experimento",
+  "description": "Escolha manualmente os dados, modelos, tratamentos e métricas. Este fluxo não chama uma IA e cria um rascunho revisável antes do treino.",
+  "tasks": {
+    "binary_classification": "Classificação binária",
+    "multiclass_classification": "Classificação multiclasse",
+    "regression": "Regressão"
+  },
+  "fields": {
+    "name": "Nome do experimento",
+    "objective": "Objetivo",
+    "task": "Tarefa",
+    "target": "Coluna a prever",
+    "features": "Variáveis de entrada",
+    "parameters": "Parâmetros (JSON)",
+    "strategy": "Estratégia",
+    "validation": "Estratégia de validação",
+    "folds": "Partições (folds)",
+    "testSize": "Tamanho do teste",
+    "seed": "Semente aleatória",
+    "primaryMetric": "Métrica principal",
+    "secondaryMetrics": "Métricas secundárias",
+    "positiveLabel": "Classe positiva",
+    "averaging": "Agregação",
+    "rocStrategy": "Estratégia ROC-AUC",
+    "enableTuning": "Otimizar hiperparâmetros com Optuna",
+    "trials": "Tentativas"
+  },
+  "columns": {
+    "title": "Resultado e variáveis de entrada",
+    "description": "Defina a coluna que será prevista e as colunas usadas pelo experimento. As demais serão ignoradas ou mantidas como identificadores.",
+    "textRequiresTfidf": "texto: ative TF-IDF abaixo",
+    "emptyDisabled": "sem valores: indisponível",
+    "typeHelp": "O tipo entre parênteses é inferido automaticamente; não define se a coluna é alvo ou entrada. Texto livre exige TF-IDF local ou geração de variáveis semânticas com IA. Revise identificadores e dados disponíveis só após o resultado."
+  },
+  "models": {
+    "title": "Modelos",
+    "description": "Selecione adapters compatíveis e, se necessário, informe hiperparâmetros explícitos."
+  },
+  "preprocessing": {
+    "title": "Pré-processamento",
+    "description": "Ative cada transformação, escolha uma estratégia registrada e informe parâmetros opcionais. Texto livre exige Vetorização de texto (TF-IDF), aprendida apenas no treino. Se um texto curto foi inferido como categórico, informe {\"columns\":[\"nome_da_coluna\"]} nos parâmetros de TF-IDF para tratá-lo como texto.",
+    "components": {
+      "text_vectorization": "Vetorização de texto (TF-IDF)",
+      "missing_values": "Valores ausentes",
+      "categorical_encoding": "Codificação categórica",
+      "boolean_encoding": "Codificação booleana",
+      "numeric_scaling": "Escalonamento numérico",
+      "datetime": "Data e hora",
+      "outliers": "Valores atípicos",
+      "imbalance": "Desbalanceamento de classes",
+      "feature_selection": "Seleção de variáveis"
+    }
+  },
+  "validation": {
+    "title": "Validação",
+    "description": "Configure a divisão reproduzível usada para medir todos os modelos selecionados."
+  },
+  "metrics": {
+    "title": "Métricas",
+    "description": "Escolha uma métrica principal e métricas secundárias compatíveis."
+  },
+  "tuning": {
+    "title": "Otimização de hiperparâmetros",
+    "description": "O Optuna usa a métrica principal e retreina o modelo final com os melhores parâmetros medidos."
+  },
+  "actions": {
+    "create": "Criar rascunho avançado",
+    "creating": "Criando rascunho..."
+  },
+  "errors": {
+    "load": "Não foi possível carregar o dataset ou catálogo de componentes.",
+    "loadDescription": "Verifique se a API está disponível e tente carregar o dataset e os componentes novamente.",
+    "retry": "Tentar carregar novamente",
+    "invalid": "Preencha os campos obrigatórios e verifique cada objeto JSON de parâmetros.",
+    "create": "Não foi possível validar ou criar a configuração avançada.",
+    "textRequiresTfidf": "Texto livre selecionado sem TF-IDF: ative Vetorização de texto (TF-IDF) no pré-processamento."
+  }
+}

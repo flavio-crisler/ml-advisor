@@ -1,0 +1,31 @@
+message,segment,target
+"Customer asks to cancel immediately because the recurring charge was unexpected 01",A,yes
+"Customer reports that everything is working and wants to keep the current plan 02",B,no
+"Please terminate my subscription today after this unresolved support problem 03",A,yes
+"The service is useful and the customer confirms renewal for another month 04",B,no
+"Customer asks to cancel immediately because the recurring charge was unexpected 05",A,yes
+"Customer reports that everything is working and wants to keep the current plan 06",B,no
+"Please terminate my subscription today after this unresolved support problem 07",A,yes
+"The service is useful and the customer confirms renewal for another month 08",B,no
+"Customer asks to cancel immediately because the recurring charge was unexpected 09",A,yes
+"Customer reports that everything is working and wants to keep the current plan 10",B,no
+"Please terminate my subscription today after this unresolved support problem 11",A,yes
+"The service is useful and the customer confirms renewal for another month 12",B,no
+"Customer asks to cancel immediately because the recurring charge was unexpected 13",A,yes
+"Customer reports that everything is working and wants to keep the current plan 14",B,no
+"Please terminate my subscription today after this unresolved support problem 15",A,yes
+"The service is useful and the customer confirms renewal for another month 16",B,no
+"Customer asks to cancel immediately because the recurring charge was unexpected 17",A,yes
+"Customer reports that everything is working and wants to keep the current plan 18",B,no
+"Please terminate my subscription today after this unresolved support problem 19",A,yes
+"The service is useful and the customer confirms renewal for another month 20",B,no
+"Customer asks to cancel immediately because the recurring charge was unexpected 21",A,yes
+"Customer reports that everything is working and wants to keep the current plan 22",B,no
+"Please terminate my subscription today after this unresolved support problem 23",A,yes
+"The service is useful and the customer confirms renewal for another month 24",B,no
+"Customer asks to cancel immediately because the recurring charge was unexpected 25",A,yes
+"Customer reports that everything is working and wants to keep the current plan 26",B,no
+"Please terminate my subscription today after this unresolved support problem 27",A,yes
+"The service is useful and the customer confirms renewal for another month 28",B,no
+"Customer asks to cancel immediately because the recurring charge was unexpected 29",A,yes
+"Customer reports that everything is working and wants to keep the current plan 30",B,no

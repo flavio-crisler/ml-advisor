@@ -1,0 +1,93 @@
+{
+  "eyebrow": "Etapa 1 de 6 · Seus dados",
+  "title": "Comece importando ou escolhendo um dataset.",
+  "description": "O ML Advisor verifica a qualidade do CSV, sugere o que pode ser previsto e guia você até a comparação dos modelos.",
+  "selected": {
+    "eyebrow": "Etapa 2 de 6 · Objetivo",
+    "title": "Agora escolha o que você deseja prever.",
+    "description": "Revise o perfil abaixo e descreva seu objetivo para receber uma estratégia guiada, ou abra a configuração avançada para escolher tudo manualmente."
+  },
+  "loading": "Carregando dataset...",
+  "upload": {
+    "title": "Importar um arquivo CSV",
+    "help": "O arquivo permanece neste computador. Depois da importação, você revisará as colunas antes de criar um experimento.",
+    "inputLabel": "Selecionar arquivo CSV",
+    "action": "Escolher arquivo CSV",
+    "processing": "Analisando dataset",
+    "progress": "Upload {{progress}}%",
+    "reused": "Este arquivo já havia sido importado; o perfil existente foi reutilizado."
+  },
+  "library": {
+    "title": "Datasets disponíveis",
+    "empty": "Nenhum dataset importado.",
+    "dimensions": "{{rows}} linhas · {{columns}} colunas"
+  },
+  "empty": {
+    "title": "Escolha um dataset para continuar",
+    "description": "Selecione um item da lista ou importe um CSV. Em seguida, você poderá revisar a qualidade dos dados e definir o que deseja prever."
+  },
+  "profile": {
+    "version": "Perfil v{{version}}"
+  },
+  "expert": {
+    "action": "Configurar manualmente"
+  },
+  "metrics": {
+    "rows": "Linhas",
+    "columns": "Colunas",
+    "duplicates": "Duplicidades",
+    "size": "Tamanho do arquivo"
+  },
+  "warnings": {
+    "title": "Alertas de qualidade",
+    "empty": "Nenhum alerta de qualidade foi identificado."
+  },
+  "warningMessages": {
+    "duplicate_rows": "Foram encontradas linhas duplicadas.",
+    "missing_values": "{{column}} contém valores ausentes.",
+    "possible_outliers": "{{column}} pode conter outliers.",
+    "possible_id": "{{column}} parece um identificador e é excluída por padrão.",
+    "high_cardinality": "{{column}} possui alta cardinalidade.",
+    "constant_column": "{{column}} é constante e ignorada por padrão.",
+    "near_constant_column": "{{column}} é quase constante.",
+    "possible_leakage": "{{column}} pode vazar informação futura.",
+    "possible_target_imbalance": "{{column}} pode estar desbalanceada."
+  },
+  "columns": {
+    "title": "Perfil das colunas",
+    "description": "O tipo e o papel são inferências heurísticas, não restrições definitivas. Na configuração, escolha o alvo e as entradas; texto livre exige TF-IDF local ou variáveis semânticas. Confira vazamento de dados antes do treino.",
+    "name": "Coluna",
+    "type": "Tipo",
+    "role": "Papel sugerido",
+    "cardinality": "Cardinalidade",
+    "missing": "Ausentes"
+  },
+  "types": {
+    "numeric": "Numérico",
+    "categorical": "Categórico",
+    "boolean": "Booleano",
+    "datetime": "Data e hora",
+    "empty": "Vazio",
+    "text": "Texto livre"
+  },
+  "roles": {
+    "feature": "Variável de entrada",
+    "target": "Possível resultado a prever",
+    "id": "Identificador",
+    "ignored": "Ignorada"
+  },
+  "preview": {
+    "title": "Amostra dos dados",
+    "description": "Primeiras linhas do CSV para uma conferência rápida."
+  },
+  "errors": {
+    "dataset_too_large": "O CSV excede o limite de upload configurado.",
+    "dataset_format_unsupported": "Selecione um arquivo CSV com nome seguro.",
+    "dataset_invalid": "Não foi possível analisar o CSV.",
+    "network": "Não foi possível acessar a API. Verifique se ela está disponível e selecione o arquivo novamente.",
+    "load": "Não foi possível carregar o dataset.",
+    "loadDescription": "Verifique se a API está disponível ou volte e escolha outro dataset.",
+    "retry": "Tentar carregar novamente",
+    "unknown": "A importação do dataset falhou. Confira o CSV e selecione o arquivo novamente."
+  }
+}

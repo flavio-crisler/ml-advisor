@@ -1,0 +1,59 @@
+{
+  "eyebrow": "AI-guided mode",
+  "title": "Get a reviewable training strategy",
+  "description": "ML Advisor uses only the dataset profile and available components to propose an editable experiment. You decide whether to train it.",
+  "objective": {
+    "label": "What do you want to predict?",
+    "placeholder": "Example: Predict which patients are likely to miss an appointment.",
+    "examples": "Examples for this dataset",
+    "targetExample": "Predict {{target}} using the other variables",
+    "datasetExample": "Predict a relevant outcome in {{dataset}}",
+    "examplesHelp": "An example only fills the field. Nothing runs until you choose an action."
+  },
+  "llmLanguage": {
+    "label": "Advisor response language",
+    "pt": "Portuguese (Brazil)",
+    "en": "English (United States)"
+  },
+  "action": {
+    "recommend": "Generate recommendation",
+    "pending": "Preparing recommendation..."
+  },
+  "auto": {
+    "action": "Train automatically",
+    "pending": "Starting automatic training...",
+    "help": "This option validates the strategy, creates the experiment, and starts training immediately."
+  },
+  "summary": {
+    "task": "Task",
+    "target": "Outcome column",
+    "models": "Models to compare"
+  },
+  "tasks": {
+    "binary_classification": "Binary classification",
+    "multiclass_classification": "Multiclass classification",
+    "regression": "Regression"
+  },
+  "explanation": "Why test this strategy",
+  "privacy": {
+    "profileOnly": "Privacy: no dataset rows were sent; only schema and aggregate profile were used.",
+    "sampleSent": "Privacy: {{count}} sample rows were sent because LLM_SEND_SAMPLE is enabled."
+  },
+  "review": {
+    "label": "Review and edit the proposal",
+    "help": "The proposal is validated again when you create the experiment draft.",
+    "invalidJson": "The edited proposal is not valid JSON.",
+    "noTraining": "Creating the draft does not start training.",
+    "createDraft": "Create guided draft",
+    "creating": "Creating draft..."
+  },
+  "errors": {
+    "llm_configuration_error": "Configure the selected LLM provider and model before requesting advice.",
+    "llm_response_error": "The provider returned an invalid recommendation. Try again or select another model.",
+    "llm_transport_error": "The configured LLM provider could not be reached. Check the connection and try again.",
+    "llm_provider_error": "The configured LLM provider could not complete the recommendation. Try again or select another model.",
+    "invalid_advisor_recommendation": "The AI could not produce a valid configuration, even after another attempt. No training was started. Generate a new recommendation or configure the experiment manually.",
+    "invalidProposal": "The edited proposal could not be validated. Review its fields and try again.",
+    "unknown": "The recommendation could not be generated. Try again or use manual configuration."
+  }
+}

@@ -1,0 +1,24 @@
+name: Feature request
+description: Suggest an improvement to ML Advisor
+title: "feat: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use case
+      description: What user problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Describe the workflow and any alternatives considered.
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Data, privacy, and compatibility considerations
+      description: Explain whether this changes external provider calls, stored artifacts, or existing experiment contracts.

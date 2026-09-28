@@ -1,0 +1,82 @@
+{
+  "loading": "Loading advanced configuration...",
+  "back": "Back to dataset",
+  "eyebrow": "Advanced mode",
+  "title": "Configure every experiment stage",
+  "description": "Choose the data, models, treatments, and metrics manually. This flow does not call AI and creates a reviewable draft before training.",
+  "tasks": {
+    "binary_classification": "Binary classification",
+    "multiclass_classification": "Multiclass classification",
+    "regression": "Regression"
+  },
+  "fields": {
+    "name": "Experiment name",
+    "objective": "Objective",
+    "task": "Task",
+    "target": "Outcome column",
+    "features": "Input variables",
+    "parameters": "Parameters (JSON)",
+    "strategy": "Strategy",
+    "validation": "Validation strategy",
+    "folds": "Partitions (folds)",
+    "testSize": "Test size",
+    "seed": "Random seed",
+    "primaryMetric": "Primary metric",
+    "secondaryMetrics": "Secondary metrics",
+    "positiveLabel": "Positive label",
+    "averaging": "Averaging",
+    "rocStrategy": "ROC-AUC strategy",
+    "enableTuning": "Optimize hyperparameters with Optuna",
+    "trials": "Attempts"
+  },
+  "columns": {
+    "title": "Outcome and input variables",
+    "description": "Choose the column to predict and the columns used by the experiment. Other columns are ignored or kept as identifiers.",
+    "textRequiresTfidf": "text: enable TF-IDF below",
+    "emptyDisabled": "no values: unavailable",
+    "typeHelp": "The type in parentheses is inferred automatically; it does not determine whether a column is the outcome or an input. Free text requires local TF-IDF or AI-generated semantic variables. Review identifiers and fields available only after the outcome."
+  },
+  "models": {
+    "title": "Models",
+    "description": "Select compatible adapters and optionally provide explicit hyperparameters."
+  },
+  "preprocessing": {
+    "title": "Preprocessing",
+    "description": "Enable each transformation, choose a registered strategy, and provide optional parameters. Free text requires Text vectorization (TF-IDF), fitted only on training data. If short text was inferred as categorical, set {\"columns\":[\"column_name\"]} in TF-IDF parameters to treat it as text.",
+    "components": {
+      "text_vectorization": "Text vectorization (TF-IDF)",
+      "missing_values": "Missing values",
+      "categorical_encoding": "Categorical encoding",
+      "boolean_encoding": "Boolean encoding",
+      "numeric_scaling": "Numeric scaling",
+      "datetime": "Date and time",
+      "outliers": "Outliers",
+      "imbalance": "Class imbalance",
+      "feature_selection": "Feature selection"
+    }
+  },
+  "validation": {
+    "title": "Validation",
+    "description": "Configure the reproducible split used to measure every selected model."
+  },
+  "metrics": {
+    "title": "Metrics",
+    "description": "Choose one primary metric and any compatible secondary metrics."
+  },
+  "tuning": {
+    "title": "Hyperparameter tuning",
+    "description": "Optuna uses the primary metric and retrains the final model with the best measured parameters."
+  },
+  "actions": {
+    "create": "Create advanced draft",
+    "creating": "Creating draft..."
+  },
+  "errors": {
+    "load": "The dataset or component catalog could not be loaded.",
+    "loadDescription": "Check that the API is available, then load the dataset and components again.",
+    "retry": "Try loading again",
+    "invalid": "Complete the required fields and verify every parameter JSON object.",
+    "create": "The advanced configuration could not be validated or created.",
+    "textRequiresTfidf": "Free text selected without TF-IDF: enable Text vectorization (TF-IDF) under preprocessing."
+  }
+}

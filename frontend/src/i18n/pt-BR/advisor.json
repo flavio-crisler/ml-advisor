@@ -1,0 +1,59 @@
+{
+  "eyebrow": "Modo guiado por IA",
+  "title": "Receba uma estratégia de treinamento revisável",
+  "description": "O ML Advisor usa apenas o perfil do dataset e os componentes disponíveis para propor um experimento editável. Você decide se deseja treiná-lo.",
+  "objective": {
+    "label": "O que você deseja prever?",
+    "placeholder": "Exemplo: Prever quais pacientes provavelmente faltarão à consulta.",
+    "examples": "Exemplos para este dataset",
+    "targetExample": "Prever {{target}} usando as demais variáveis",
+    "datasetExample": "Prever um resultado relevante em {{dataset}}",
+    "examplesHelp": "O exemplo apenas preenche o campo. Nada será executado até você escolher uma ação."
+  },
+  "llmLanguage": {
+    "label": "Idioma da resposta do Advisor",
+    "pt": "Português (Brasil)",
+    "en": "Inglês (Estados Unidos)"
+  },
+  "action": {
+    "recommend": "Gerar recomendação",
+    "pending": "Preparando recomendação..."
+  },
+  "auto": {
+    "action": "Treinar automaticamente",
+    "pending": "Iniciando treinamento automático...",
+    "help": "Esta opção valida a estratégia, cria o experimento e inicia o treinamento imediatamente."
+  },
+  "summary": {
+    "task": "Tarefa",
+    "target": "Coluna a prever",
+    "models": "Modelos para comparar"
+  },
+  "tasks": {
+    "binary_classification": "Classificação binária",
+    "multiclass_classification": "Classificação multiclasse",
+    "regression": "Regressão"
+  },
+  "explanation": "Por que testar esta estratégia",
+  "privacy": {
+    "profileOnly": "Privacidade: nenhuma linha do dataset foi enviada; apenas schema e perfil agregado foram usados.",
+    "sampleSent": "Privacidade: {{count}} linhas de amostra foram enviadas porque LLM_SEND_SAMPLE está ativo."
+  },
+  "review": {
+    "label": "Revise e edite a proposta",
+    "help": "A proposta será validada novamente ao criar o rascunho do experimento.",
+    "invalidJson": "A proposta editada não é um JSON válido.",
+    "noTraining": "Criar o rascunho não inicia o treinamento.",
+    "createDraft": "Criar rascunho guiado",
+    "creating": "Criando rascunho..."
+  },
+  "errors": {
+    "llm_configuration_error": "Configure o provider e o modelo LLM selecionados antes de pedir a recomendação.",
+    "llm_response_error": "O provider retornou uma recomendação inválida. Tente novamente ou selecione outro modelo.",
+    "llm_transport_error": "Não foi possível acessar o provider LLM configurado. Verifique a conexão e tente novamente.",
+    "llm_provider_error": "O provider LLM configurado não conseguiu concluir a recomendação. Tente novamente ou selecione outro modelo.",
+    "invalid_advisor_recommendation": "A IA não conseguiu montar uma configuração válida, mesmo após uma nova tentativa. Nenhum treinamento foi iniciado. Tente gerar novamente ou configure o experimento manualmente.",
+    "invalidProposal": "A proposta editada não foi validada. Revise os campos e tente novamente.",
+    "unknown": "Não foi possível gerar a recomendação. Tente novamente ou use a configuração manual."
+  }
+}

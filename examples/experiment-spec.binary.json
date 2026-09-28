@@ -1,0 +1,56 @@
+{
+  "spec_version": "1.0",
+  "dataset_id": "replace-after-upload",
+  "dataset_hash": "replace-with-uploaded-sha256",
+  "profile_version": "1.0",
+  "name": "Attendance prediction",
+  "objective": "Predict whether a customer will miss an appointment",
+  "task": "binary_classification",
+  "target": "missed",
+  "features": ["age", "segment"],
+  "column_roles": {
+    "customer_id": "id",
+    "age": "feature",
+    "segment": "feature",
+    "missed": "target"
+  },
+  "models": [
+    {
+      "id": "logistic_regression",
+      "enabled": true,
+      "parameters": {}
+    }
+  ],
+  "preprocessing": [
+    {
+      "id": "missing_values",
+      "strategy": "median",
+      "parameters": {}
+    },
+    {
+      "id": "categorical_encoding",
+      "strategy": "one_hot",
+      "parameters": {}
+    }
+  ],
+  "validation": {
+    "strategy": "stratified_kfold",
+    "test_size": 0.2,
+    "folds": 5,
+    "shuffle": true,
+    "random_seed": 41
+  },
+  "metrics": {
+    "primary": "f1",
+    "secondary": ["roc_auc"],
+    "averaging": null,
+    "roc_auc_strategy": null,
+    "positive_label": "yes"
+  },
+  "tuning": {
+    "enabled": true,
+    "engine": "optuna",
+    "trials": 10,
+    "metric": "f1"
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "brand": {
+    "name": "ML Advisor"
+  },
+  "language": {
+    "selector": "Select language",
+    "portuguese": "PT",
+    "english": "EN"
+  },
+  "help": {
+    "moreInformation": "More information",
+    "moreInformationFor": "More information about {{label}}"
+  },
+  "aiExplanation": {
+    "title": "Explain results with AI",
+    "description": "Generates, only when requested, an overall interpretation and one explanation per chart using the displayed settings, metrics, and aggregates. No original dataset rows are sent.",
+    "action": "Generate explanation",
+    "regenerate": "Generate again",
+    "loading": "Generating explanation...",
+    "localNotice": "Provider {{provider}} runs locally. The context stays in this environment.",
+    "externalNotice": "Provider {{provider}} is external. If you continue, the displayed aggregate context will be sent to that service.",
+    "unavailable": "Configure LLM_PROVIDER and LLM_MODEL to enable this explanation.",
+    "error": "The explanation could not be generated. Review the provider configuration and try again.",
+    "generatedLabel": "AI-generated interpretation",
+    "findings": "Key findings",
+    "cautions": "Cautions",
+    "nextSteps": "Next steps",
+    "disclaimer": "Use this explanation as supporting context: verify the metrics before making decisions. The response is not persisted and never triggers actions automatically."
+  },
+  "aiChart": {
+    "title": "Explanation for this chart",
+    "description": "The overall analysis appears here. A deep dive sends only this chart's aggregates together with the run context.",
+    "action": "Deepen with AI",
+    "regenerate": "Deepen again",
+    "loading": "Deepening...",
+    "generatedLabel": "Overall AI analysis",
+    "focusedLabel": "AI deep dive",
+    "error": "This chart explanation could not be deepened. Check the provider and try again."
+  },
+  "aiImprovement": {
+    "title": "Applicable improvement proposal",
+    "description": "AI can only select components and parameters supported by ML Advisor. You review every difference before creating a new experiment.",
+    "generate": "Create improvement proposal",
+    "regenerate": "Generate another proposal",
+    "generating": "Generating proposal...",
+    "error": "The proposal could not be validated. No configuration was applied; review the provider and generate another proposal.",
+    "reviewLabel": "Review required",
+    "changes": "Proposed changes",
+    "before": "Current configuration",
+    "after": "Proposed configuration",
+    "rationale": "Rationale",
+    "cautions": "Cautions",
+    "unsupported": "Unsupported suggestions",
+    "createDraft": "Create experiment draft",
+    "creatingDraft": "Creating draft...",
+    "noTraining": "This action only creates a draft. Training requires another click on the experiment page.",
+    "draftError": "The draft could not be created. The source may have changed; generate a new proposal."
+  },
+  "navigation": {
+    "label": "Main navigation",
+    "datasets": "Data",
+    "experiments": "Experiments",
+    "decisionLab": "AI Decisions",
+    "resume": "Resume: {{area}}"
+  },
+  "home": {
+    "eyebrow": "Local-first AutoML",
+    "title": "Clear, reproducible machine learning experiments.",
+    "description": "A modular foundation for building, comparing, and understanding tabular models without giving up technical control.",
+    "foundationLabel": "Current phase",
+    "foundationValue": "Repository foundation",
+    "recent": {
+      "title": "Recent experiments",
+      "description": "Continue a run or review its leading model and primary metric.",
+      "loading": "Loading recent experiments...",
+      "error": "Recent experiments could not be loaded.",
+      "errorDescription": "Check that the API is available and try again.",
+      "retry": "Try loading again",
+      "emptyTitle": "No experiments yet.",
+      "emptyDescription": "Import a dataset, define an objective, and choose a workflow mode.",
+      "dataset": "Dataset",
+      "task": "Task",
+      "bestModel": "Best model",
+      "pending": "Pending",
+      "start": "Import data and start",
+      "actions": {
+        "draft": "Continue configuration",
+        "queued": "Track queue",
+        "running": "Track training",
+        "completed": "View results",
+        "failed": "Review failure",
+        "cancelled": "Review and train again",
+        "open": "Open experiment"
+      }
+    },
+    "guide": {
+      "title": "What you can do",
+      "description": "Choose a path. You can use traditional training alone or add AI features when they are useful.",
+      "dismiss": "Hide guide",
+      "show": "Show starter guide",
+      "hidden": "The starter guide is hidden. You can open it again at any time.",
+      "train": {
+        "title": "Train and compare models",
+        "description": "Import a CSV, define what to predict, and compare models with a reproducible configuration.",
+        "action": "Import CSV"
+      },
+      "understand": {
+        "title": "Understand the results",
+        "description": "Review metrics and charts for each training run and, when useful, ask AI for a contextual explanation.",
+        "action": "View experiments"
+      },
+      "decide": {
+        "title": "Evaluate decisions with AI",
+        "description": "Compare zero-shot models, create semantic variables, and simulate confidence policies with controlled data.",
+        "action": "Explore decisions"
+      }
+    },
+    "tasks": {
+      "binary_classification": "Binary classification",
+      "multiclass_classification": "Multiclass classification",
+      "regression": "Regression"
+    }
+  },
+  "health": {
+    "label": "API status",
+    "checking": "Checking API",
+    "online": "API available",
+    "offline": "API unavailable"
+  },
+  "catalog": {
+    "title": "Available training resources",
+    "description": "Installed components that ML Advisor can use in experiments.",
+    "loading": "Loading component catalog...",
+    "error": "The component catalog is unavailable.",
+    "retry": "Try again",
+    "models": "Models",
+    "metrics": "Metrics",
+    "preprocessors": "Data treatments",
+    "validators": "Validation strategies",
+    "tuners": "Optimization methods"
+  },
+  "workflow": {
+    "label": "Experiment workflow",
+    "steps": {
+      "dataset": "Data",
+      "objective": "What to predict",
+      "strategy": "How to train",
+      "configuration": "Review",
+      "training": "Train",
+      "results": "Results"
+    }
+  }
+}

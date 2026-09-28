@@ -1,0 +1,93 @@
+{
+  "eyebrow": "Step 1 of 6 · Your data",
+  "title": "Start by importing or choosing a dataset.",
+  "description": "ML Advisor checks CSV quality, suggests what can be predicted, and guides you through model comparison.",
+  "selected": {
+    "eyebrow": "Step 2 of 6 · Goal",
+    "title": "Now choose what you want to predict.",
+    "description": "Review the profile below and describe your goal for a guided strategy, or open advanced configuration to choose everything manually."
+  },
+  "loading": "Loading dataset...",
+  "upload": {
+    "title": "Import a CSV file",
+    "help": "The file stays on this computer. After importing, you will review its columns before creating an experiment.",
+    "inputLabel": "Select CSV file",
+    "action": "Choose CSV file",
+    "processing": "Analyzing dataset",
+    "progress": "Upload {{progress}}%",
+    "reused": "This file was already imported, so its existing profile was reused."
+  },
+  "library": {
+    "title": "Available datasets",
+    "empty": "No datasets imported yet.",
+    "dimensions": "{{rows}} rows · {{columns}} columns"
+  },
+  "empty": {
+    "title": "Choose a dataset to continue",
+    "description": "Select an item from the list or import a CSV. You can then review data quality and define what you want to predict."
+  },
+  "profile": {
+    "version": "Profile v{{version}}"
+  },
+  "expert": {
+    "action": "Configure manually"
+  },
+  "metrics": {
+    "rows": "Rows",
+    "columns": "Columns",
+    "duplicates": "Duplicates",
+    "size": "File size"
+  },
+  "warnings": {
+    "title": "Quality warnings",
+    "empty": "No quality warnings were detected."
+  },
+  "warningMessages": {
+    "duplicate_rows": "Duplicate rows were detected.",
+    "missing_values": "{{column}} contains missing values.",
+    "possible_outliers": "{{column}} may contain outliers.",
+    "possible_id": "{{column}} looks like an identifier and is excluded by default.",
+    "high_cardinality": "{{column}} has high cardinality.",
+    "constant_column": "{{column}} is constant and is ignored by default.",
+    "near_constant_column": "{{column}} is nearly constant.",
+    "possible_leakage": "{{column}} may leak future information.",
+    "possible_target_imbalance": "{{column}} may be imbalanced."
+  },
+  "columns": {
+    "title": "Column profile",
+    "description": "Type and role are heuristic inferences, not final restrictions. In the configuration, choose the outcome and inputs; free text requires local TF-IDF or semantic variables. Check for data leakage before training.",
+    "name": "Column",
+    "type": "Type",
+    "role": "Suggested role",
+    "cardinality": "Cardinality",
+    "missing": "Missing"
+  },
+  "types": {
+    "numeric": "Numeric",
+    "categorical": "Categorical",
+    "boolean": "Boolean",
+    "datetime": "Date and time",
+    "empty": "Empty",
+    "text": "Free text"
+  },
+  "roles": {
+    "feature": "Input variable",
+    "target": "Possible outcome to predict",
+    "id": "Identifier",
+    "ignored": "Ignored"
+  },
+  "preview": {
+    "title": "Data sample",
+    "description": "First rows from the CSV for a quick review."
+  },
+  "errors": {
+    "dataset_too_large": "The CSV exceeds the configured upload limit.",
+    "dataset_format_unsupported": "Select a CSV file with a safe filename.",
+    "dataset_invalid": "The CSV could not be analyzed.",
+    "network": "The API could not be reached. Check that it is available and select the file again.",
+    "load": "The dataset could not be loaded.",
+    "loadDescription": "Check that the API is available, or go back and choose another dataset.",
+    "retry": "Try loading again",
+    "unknown": "The dataset import failed. Check the CSV and select the file again."
+  }
+}

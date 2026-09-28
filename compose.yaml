@@ -1,0 +1,82 @@
+name: ml-advisor
+
+services:
+  flyway:
+    image: redgate/flyway:13.7.0
+    command:
+      - -url=jdbc:sqlite:/data/database/app.db
+      - -locations=filesystem:/flyway/sql
+      - -connectRetries=10
+      - migrate
+    volumes:
+      - ./backend/migrations:/flyway/sql:ro
+      - ./data:/data
+    restart: "no"
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+      target: production
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: sqlite:////data/database/app.db
+    volumes:
+      - ./data:/data
+    ports:
+      - "127.0.0.1:${BACKEND_PORT:-8000}:8000"
+    depends_on:
+      flyway:
+        condition: service_completed_successfully
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/health')"
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 5s
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+      target: production
+    ports:
+      - "127.0.0.1:${FRONTEND_PORT:-8080}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  ollama:
+    image: ollama/ollama:latest
+    profiles: ["ollama"]
+    ports:
+      - "127.0.0.1:11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+  vllm:
+    image: vllm/vllm-openai:latest
+    profiles: ["vllm"]
+    environment:
+      VLLM_MODEL: "${LLM_MODEL:-}"
+    command: ["--model", "${LLM_MODEL:-}"]
+    ports:
+      - "127.0.0.1:8001:8000"
+    volumes:
+      - vllm_cache:/root/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+volumes:
+  ollama_data:
+  vllm_cache:
